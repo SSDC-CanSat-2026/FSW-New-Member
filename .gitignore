@@ -1,0 +1,16 @@
+.cproject
+.mxproject
+.project
+*.DS_Store
+*.prefs
+*.xml
+*.s 
+*.cyclo
+*.su
+*.o
+*.d 
+*.mk
+*.elf
+*.map
+*.list
+*.ld
