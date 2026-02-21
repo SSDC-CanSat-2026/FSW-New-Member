@@ -63,8 +63,6 @@ void Error_Handler(void);
 #define T4_CNT 9999
 #define PWM_1 4999
 #define CONST 1
-#define STAT_BKUP_Pin GPIO_PIN_13
-#define STAT_BKUP_GPIO_Port GPIOC
 #define OSC32_IN_Pin GPIO_PIN_14
 #define OSC32_IN_GPIO_Port GPIOC
 #define OSC32_OUT_Pin GPIO_PIN_15
@@ -75,8 +73,6 @@ void Error_Handler(void);
 #define CHG_STAT1_GPIO_Port GPIOF
 #define ENC0_A_Pin GPIO_PIN_0
 #define ENC0_A_GPIO_Port GPIOC
-#define ENC0_B_Pin GPIO_PIN_1
-#define ENC0_B_GPIO_Port GPIOC
 #define EN_5V_Pin GPIO_PIN_2
 #define EN_5V_GPIO_Port GPIOC
 #define VUSB_Pin GPIO_PIN_3
@@ -117,6 +113,8 @@ void Error_Handler(void);
 #define ENC1_A_GPIO_Port GPIOC
 #define ENC1_B_Pin GPIO_PIN_7
 #define ENC1_B_GPIO_Port GPIOC
+#define ENC0_B_Pin GPIO_PIN_9
+#define ENC0_B_GPIO_Port GPIOA
 #define SWDIO_Pin GPIO_PIN_13
 #define SWDIO_GPIO_Port GPIOA
 #define SWCLK_Pin GPIO_PIN_14
