@@ -18,7 +18,7 @@ We are using an **STM32**G491​RCT6 (as of 2025-2026 CanSat) and so requires th
 
 ## Importing an STM32 project
 After opening a workspace, it should look something like this:
-![STM32 Homescreen](images/STM32Home.png)
+![STM32 Homescreen](Images/STM32Home.png)
 On the top left corner, click "File" -> "Open Projects from File Systems".    
 
 ## Writing Driver Code for Sensors
