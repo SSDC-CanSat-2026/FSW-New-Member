@@ -11,10 +11,67 @@ We will also be walking you through important code structures that will be impor
 ### Requirements:
 - Understanding of a programming language (ideally C or C++). This project is done in C.
 - [STM32CubeIDE](https://www.st.com/en/development-tools/stm32cubeide.html) (use a guest account with your UFL email).
+- Git and GitBash
 
 **NOTE**: STM32CubeIDE's website can be a little slow sometimes, try asking your team lead if they have a version downloaded already. If not, try again later.
 
 We are using an **STM32**G491​RCT6 (as of 2025-2026 CanSat) and so requires the STM32CubeIDE to automate a lot of the code! **When asked which version, just go with the newest.**
+
+## Cloning and Making a Branch off of GitHub
+#### Basic Linux Commands + Shortcuts that you should know.
+Commands
+- ls (Print what is in your current directory/folder)
+- cd (Change Directory. Change your current directory/folder)
+
+Shortcuts
+- TAB key (The Command Line Interface, CLI, will try to autofill with what it has)
+
+
+We will be doing this on the Command Line and then there will be an optional link with GitHub.
+
+![GitHub Repo Homepage](Images/GitHubWebpage.png)
+1. Click on the green "Code".
+
+![Copy Repo Button](Images/GitHubCopy.png)
+2. Then the copy icon.
+
+3. Opening the GitBash terminal, go to the directory that you want to put the GitHub repo into. Then you would want to do:
+```
+git clone <link>
+```
+where \<link> will be what you just copied from GitHub. "Enter" to send the command. This makes a local version of the GitHub repository for you to access.
+
+![CLI repo main branch](Images/MainBranchOnCLI.png)
+4. Changing Directory to "FSW-New-Member", you should see that now you are on the "main" **branch**. A branch is like a version of the code and allows you to work independently from other people to work on something but then be able to **merge** branches together later on for collaboration. You DO NOT want to work on the main branch since you would want to make sure that your code works before having it be the definite version. A lot of repositories have restrictions that prevent you from sending new code to main, but that depends on group. We will now be making a new branch for you.
+
+**Extra**: You are able to see other branches made by anyone by doing 
+``` git branch ``` for local (on your computer branches) or ``` git branch -r ``` for branches by other users.
+
+5. Make a new branch for this project by doing
+```
+git branch <name>
+```
+Replace \<name> with "\<FirstName>\_\<LastName>\_New_FSW_Project".
+
+Now if you do ``` git branch ``` you should be able to see your new branch:
+![Git with the new Branch](Images/GitBranches.png)
+
+6. Move to that new branch by doing 
+```
+git checkout <name>
+```
+You should now see:
+![Current Branch is the new Branch](Images/NewBranchCLI.png)
+
+You are now able to open the project with an IDE like STM32CubeIDE and/or VSCode and start coding!
+
+### Optional: Connecting your repo to GitHub Desktop application
+Make sure you have done the instructions above for this. Also make sure that you are signed onto GitHub.
+
+7. After opening GitHub desktop, clock on this area to change repositories.
+![GitHub Desktop HomePage](Images/GitHubDesktopStart.png)
+
+
 
 ## Importing an STM32 project
 After opening a workspace, it should look something like this:
