@@ -3,6 +3,7 @@ New member project for FSW to learn about STM32 by having members write a snesor
 
 Made by **Sarah Tran** and **Joel Kubinsky**.
 
+
 ## What will you be doing?
 You will be learning about understanding an existing Real-Time Operating Systems with the STM32. Afterwards, you will be writing driver code to translate sensor information to something that the STM32 can use. That information is then going to be sent to an XBEE radio to show on a Ground Control Station (which you do not need to code).
 
@@ -17,7 +18,12 @@ We will also be walking you through important code structures that will be impor
 
 We are using an **STM32**G491​RCT6 (as of 2025-2026 CanSat) and so requires the STM32CubeIDE to automate a lot of the code! **When asked which version, just go with the newest.**
 
-## Cloning and Making a Branch off of GitHub
+## Table of Contents
+[1. Cloning and Making a Branch from GitHub](#part-1:-cloning-and-making-a-branch-off-of-github)
+
+[2. Importing an STM32 project](#part-2-importing-an-stm32-project)
+
+## PART 1: Cloning and Making a Branch from GitHub
 #### Basic Linux Commands + Shortcuts that you should know.
 Commands
 - ls (Print what is in your current directory/folder)
@@ -68,12 +74,17 @@ You are now able to open the project with an IDE like STM32CubeIDE and/or VSCode
 ### Optional: Connecting your repo to GitHub Desktop application
 Make sure you have done the instructions above for this. Also make sure that you are signed onto GitHub.
 
-7. After opening GitHub desktop, clock on this area to change repositories.
+7. After opening GitHub desktop, click on this area to change repositories.
 ![GitHub Desktop HomePage](Images/GitHubDesktopStart.png)
 
+Then `click "Add" => "Add existing repository..." => "Choose"` then find the folder for this project. You'll know when you are in it when you see a ```.git``` folder in the current directory. Now do `Select Folder => Add repository`  
+
+You should be able to see now that your Repository is `FSW-New-Member` and the Current Branch to the right is the branch that you made.
+![GitHub Deskstop Success](Images/GitHubDesktopCloneSuccess.png)
 
 
-## Importing an STM32 project
+---
+## PART 2: Importing an STM32 project
 After opening a workspace, it should look something like this:
 ![STM32 Homescreen](Images/STM32Home.png)
 On the top left corner, click "File" -> "Open Projects from File Systems".    
