@@ -100,7 +100,7 @@ Make sure that you folder autofills the folder section like this:
 You should now be brought back to the main page with the new project on the side, like with VSCode.
 ![Home Page With Project](Images/STM32WithProjectImported.png)
 
-## PART 3: Writing a Driver for a Sensor (ICM42688P)
+## PART 3a: Writing a Driver for a Sensor (ICM42688P)
 We are using a library called FreeRTOS which autogenerates a lot of the features like task scheduling using the ```NewMember.ioc```. So a lot of the files in the project are not very important for you to mess with. Though the following below are files or folders that you should take a read at and understand what is going on. 
 
 - If the file is indented, it is indicating of which folder it is in.
@@ -129,12 +129,30 @@ For this specific project, you will be editing:
 
 By using the ICM42688P documentation in the `Documentation` and other sources that you can find, write the driver code that uses the sensor's SPI interface to send it's data through the `ICM42688P_AccelData` struct found in the `ICM42688SPI.h` file.
 
+## PART 3b: Connecting the Driver
+1. You need to include the ICM42688 Driver in main. Find where the other includes are and based it off it there.
+
+#### What is RTOS?
+Before we continue, you should know what RTOS is, including understanding what tasks and what scheduling is.
+
+An **RTOS (Real-Time Operating System)** makes sure that tasks that we want to do are completed by a specific **deadline** if needed. Timing is critical because it may lead to system failure, unsafe behavior, or missed specification. For example, for the CanSat competition, telemetry data HAS to be sent to the Gound Control Station at 1 Hz (every 1 second). So we would need a system that is able to **schedule** this task every second and and find things to fill inbetween each send. A **scheduler** manages these tasks, deciding which ones to run and when based on parameters like **priority** (how urgent the task is) and **period** (how often it runs, like every second). We are using FreeRTOS, provided by STM32CubeIDE which does most of the work for us, so all we have to do intialize the tasks, its parametears, and specify what the tasks to.
+
+For the new member project, there is currently two task already intialized. 1) StartReadSensors which reads each of our sensors and 2) StartComms which checks to see if a command has been sent from the Ground Control Station. **For this section, you will be writing code for the StartReadSensors task.**
+
+2. Find the StartReadSensors task and use the sensor driver that you just wrote to set values in the globalData struct (found in global.h and global.c). 
+
 ## PART 4: Writing to the XBEEs
 (TO BE WRITTEN)
 
 ## Writing Driver Code for Sensors
 SPI     - Reading ICM42688\
 USART   - Writing to XBEEs
+
+## Notes for Sarah
+Are we going to have them make a new task??????
+
+`osStatus osSemaphoreWait (osSemaphoreId semaphore_id, uint32_t millisec)`
+`osStatus osSemaphoreRelease (osSemaphoreId semaphore_id)`
 
 ## Extra Resources
 - Learn more about [SPI](https://youtu.be/MBwtJhO6b0I?si=Nb-yW6-bYA13eYJV) and [USART](https://youtu.be/fkVYkDuB_38?si=hZDJfQHnWz25cNov) from Dr. Schwartz here at UF.
