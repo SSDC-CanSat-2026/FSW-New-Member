@@ -37,7 +37,7 @@ extern "C"
 #endif
 
 #include "stm32g4xx_hal.h"
-#include "ICM42688P/ICM42688PSPI.h"
+#include "../ICM42688P/ICM42688PSPI.h"
 #include <math.h>
 #include <string.h>
 #include <global.h>

@@ -27,7 +27,6 @@
 // #include "commands.h"
 #include "uart_interrupt.h"
 
-#include "../../Drivers/ICM42688P/ICM42688PSPI.h"
 #include "../../Drivers/MS5607/MS5607SPI.h"
 #include "../../Drivers/BMM150/BMM150SPI.h"
 #include "../../Drivers/LC76G/LC76G.h"
@@ -1200,88 +1199,6 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-/*
-void SendTelemetry(void *argument)
-{
-  /* USER CODE BEGIN SendTelemetry */
-// this can probably be dynamically typed to take the sizeof() each property instead of being hardcoded
-// unsigned int property_sizes[] = {2, 4, 4, 1, STATE_TEXT_LEN, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 2, 4, 4, 4, 4, 1, CMD_ECHO_LEN};
-
-/* Infinite loop */
-/*
-for (;;)
-{
-  // create buffer to copy mission data into
-  // +19 for all necessary commas
-  char telemetry_string[sizeof(global_mission_data) + 19];
-  char *data_pointer = &global_mission_data;
-
-  // external index!!
-  unsigned int s_index = 0;
-
-  // find length of array
-  unsigned int num_properties = sizeof(property_sizes) / sizeof(unsigned int);
-  for (unsigned int k = 0; k < num_properties; k++)
-  {
-    // memcpy() transfers 'k' bytes of data from the struct to the string
-    memcpy(*telemetry_string + index, data_pointer, property_sizes[k]);
-
-    // move the data pointer and the string pointer separately (commas in the
-    // resulting string mean the two positions are not always equal)
-    data_pointer += property_sizes[k];
-    s_index += property_sizes[k];
-
-    // don't add a comma after the last property!
-    if (k < num_properties - 1)
-    {
-      telemetry_string[s_index] = ',';
-      s_index = s_index + 1;
-    }
-  }
-
-  // after copying all the data over, add a null terminator at the end
-  telemetry_string[s_index] = '\0';
-
-  // char test_string[] = "TESTLEMETRY";
-
-  // HAL_UART_Transmit(&huart4, test_string, sizeof(test_string), 250);
-
-  /*
-  telemetry_string[] now contains global_mission_data formatted as a string of characters
-  data in LITTLE ENDIAN format:
-    TEAM_ID = 3174 = 0x0C66 and is stored as ASCII codes 0x66 ('f') followed by 0x0C (NP form feed) in the string
-
-  string format is as follows in terms of bytes:
-    string[0:1] = TEAM_ID[1:0]
-    string[2:5] = MISSION_TIME[3:0] <-- format to UTC time (hh:mm:ss)
-    string[6:9] = PACKET_COUNT[3:0]
-    string[10] = MODE
-    string[11:20] = STATE[0:9]
-    string[21:24] = ALTITUDE[3:0]
-    string[25:28] = TEMPERATURE[3:0]
-    string[29:32] = PRESSURE[3:0]
-    string[33:36] = VOLTAGE[3:0]
-    string[37:40] = GYRO_R[3:0]
-    string[41:44] = GYRO_P[3:0]
-    string[45:48] = GYRO_Y[3:0]
-    string[49:52] = ACCEL_R[3:0]
-    string[53:56] = ACCEL_P[3:0]
-    string[57:60] = ACCEL_Y[3:0]
-    string[61:64] = MAG_R[3:0]
-    string[65:68] = MAG_P[3:0]
-    string[69:72] = MAG_Y[3:0]
-    string[73:74] = AUTO_GYRO_ROTATION_RATE[1:0]
-    string[75:78] = GPS_TIME[3:0]
-    string[79:82] = GPS_ALTITUDE[3:0]
-    string[83:86] = GPS_LATITUDE[3:0]
-    string[87:90] = GPS_LONGITUDE[3:0]
-    string[91] = GPS_SATS
-    string[92:101] = CMD_ECHO[0:9]
-  */
-
-// HAL_Delay(1000);
-//}
-//}
 
 /* USER CODE END 4 */
 
@@ -1300,6 +1217,7 @@ void StartReadSensors(void const * argument)
   /* Infinite loop */
   for(;;)
   {
+	// TODO: Write code that uses the drivers to set global data values.
     osDelay(1);
   }
   /* USER CODE END 5 */

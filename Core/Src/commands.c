@@ -30,8 +30,8 @@ static void get_current_token(const uint8_t token_size, char* token, char** cmd_
 	}
 
 	// Assign CMD_ECHO to the current command
-	memset(global_mission_data.CMD_ECHO, 0, 10);
-	strncat(global_mission_data.CMD_ECHO, token, char_cnt);
+	//memset(global_mission_data.CMD_ECHO, 0, 10);
+	//strncat(global_mission_data.CMD_ECHO, token, char_cnt);
 }
 
 static uint8_t verify_time_format(const char* time){
@@ -110,7 +110,7 @@ static CMD_STATUS perform_ST(const char* incoming, char* cmd_ptr){
 	  //then use macro, or helper func another file kinda needs to be made for that (including verifying above)
 	  if(verify_time_format(time)){
 		  gps_time_enable = 0;
-		  strncpy(global_mission_data.MISSION_TIME, cmd_ptr + 3, 8);
+		  //strncpy(global_mission_data.MISSION_TIME, cmd_ptr + 3, 8);
 		  return CMD_ST_UTC;
 	  }else{
 		  return CMD_ST_INVLD;
@@ -127,13 +127,13 @@ static CMD_STATUS perform_SIM(const char* incoming, char* cmd_ptr){
 		return CMD_SIM_E;
 	}else if(!strncmp(sim, "ACTIVATE", 8)){
 		if(sim_enabled){
-			global_mission_data.MODE = 'S';
+			//global_mission_data.MODE = 'S';
 			return CMD_SIM_S;
 		}
 		return CMD_SIM_NE;
 	}else if(!strncmp(sim, "DISABLE", 7)){
 		sim_enabled = 0;
-		global_mission_data.MODE = 'F';
+		//global_mission_data.MODE = 'F';
 		return CMD_SIM_F;
 	}else{
 		return CMD_SIM_INVLD;

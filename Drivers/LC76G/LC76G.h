@@ -2,7 +2,7 @@
 #define _LC76G_H_
 
 #include "stm32g4xx_hal.h"
-#include "uart_interrupt.h"
+#include "../../Core/Inc/uart_interrupt.h"
 
 #define TIMEOUT 5
 #define ARRAY_LEN(x)            (sizeof(x) / sizeof((x)[0]))

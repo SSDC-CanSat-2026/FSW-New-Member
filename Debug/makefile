@@ -11,6 +11,10 @@ RM := rm -rf
 -include sources.mk
 -include USB_Device/Target/subdir.mk
 -include USB_Device/App/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/portable/MemMang/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/portable/GCC/ARM_CM4F/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/subdir.mk
+-include Middlewares/Third_Party/FreeRTOS/Source/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Core/Src/subdir.mk
 -include Middlewares/ST/STM32_USB_Device_Library/Class/DFU/Src/subdir.mk
 -include Drivers/STM32G4xx_HAL_Driver/Src/subdir.mk
@@ -46,34 +50,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := NewMember
+BUILD_ARTIFACT_NAME := FSW-New-Member
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-NewMember.elf \
+FSW-New-Member.elf \
 
 MAP_FILES += \
-NewMember.map \
+FSW-New-Member.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-NewMember.list \
+FSW-New-Member.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: NewMember.elf secondary-outputs
+main-build: FSW-New-Member.elf secondary-outputs
 
 # Tool invocations
-NewMember.elf NewMember.map: $(OBJS) $(USER_OBJS) C:\Users\sarah\Documents\GitHub\CanSat2026\FSW-New-Member\STM32G491RCTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "NewMember.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\sarah\Documents\GitHub\CanSat2026\FSW-New-Member\STM32G491RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="NewMember.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -u _printf_float -Wl,--start-group -lc -lm -Wl,--end-group
+FSW-New-Member.elf FSW-New-Member.map: $(OBJS) $(USER_OBJS) C:\Users\sarah\Documents\GitHub\CanSat2026\FSW-New-Member\STM32G491RCTX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "FSW-New-Member.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\sarah\Documents\GitHub\CanSat2026\FSW-New-Member\STM32G491RCTX_FLASH.ld" --specs=nosys.specs -Wl,-Map="FSW-New-Member.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -82,14 +86,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-NewMember.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "NewMember.list"
+FSW-New-Member.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "FSW-New-Member.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) NewMember.elf NewMember.list NewMember.map default.size.stdout
+	-$(RM) FSW-New-Member.elf FSW-New-Member.list FSW-New-Member.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

@@ -352,7 +352,7 @@ Temperature - Celcius - double
 // https://www.weather.gov/media/epz/wxcalc/pressureAltitude.pdf
 // The altitude equation is for absolute altitude.
 // calibraing : 1 = True, 0 = False
-float const alt_offset_height = 20.00;
+/* float const alt_offset_height = 20.00;
 float const accel_tolerance = 0.1;
 
 float calibrated_altitude = 0.00;
@@ -425,4 +425,4 @@ void determineState(double altitude){
             memcpy(global_mission_data.STATE, _state, sizeof(_state));
         }
     }
-}
+}*/
